@@ -18,8 +18,8 @@ app.set('view engine', 'html');
 
 app.use(express.logger('dev'));
 app.use(express.bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(express.bodyParser.urlencoded({ extended: false }));
+app.use(express.cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
