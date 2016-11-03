@@ -1,4 +1,6 @@
 
+var counter = 4;
+
 $(document).ready(function() {
 	initializePage();
 })
@@ -12,27 +14,21 @@ $("#new-cat").click(projectClick);
 
 function projectClick(e) {
 	e.preventDefault();
-	var category = $(this);
+	var category = $('#new-cat');
+	var item = $("#items");
 	console.log(category);
-	category.prepend("<li class='budg-item'>New Category (Place Holder)</li>");
+	counter++;
+	$("#defaultItems").append("<li class='budg-item'>" +category+"<input type='range' class='slider' min='0' max='50' value='0' step='10' oninput='showValue("+counter+", this.value)' /><span id='range" + counter + "'>0</span></li>");
 }
 
-function showValue1(newValue)
+function showValue(element, newValue)
 {
-	document.getElementById("range1").innerHTML=newValue;
+
+	document.getElementById("range"+element).innerHTML=newValue;
+	//access element in database using @element, update value with newValue 
 }
 
-function showValue2(newValue)
-{
-	document.getElementById("range2").innerHTML=newValue;
-}
+// data = '[{"name" : "Ashwin", "age" : "20"},{"name" : "Abhinandan", "age" : "20"}]';
+// var mydata = JSON.parse(data);
+// document.getElementById("itemName").innerHTML=mydata[0].name;
 
-function showValue3(newValue)
-{
-	document.getElementById("range3").innerHTML=newValue;
-}
-
-function showValue4(newValue)
-{
-	document.getElementById("range4").innerHTML=newValue;
-}
